@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国象棋 - 交互指南</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .section {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+        }
+        .section h2 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            margin: 10px 0;
+            padding: 10px 15px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid #3498db;
+        }
+        .feature-list li:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .controls {
+            background: rgba(231, 76, 60, 0.1);
+            border-left-color: #e74c3c;
+        }
+        .controls h2 {
+            color: #c0392b;
+        }
+        .pieces {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .piece {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .red-piece {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        .black-piece {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+        }
+        .status {
+            text-align: center;
+            padding: 15px;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #27ae60;
+        }
+        .status.running {
+            border-color: #27ae60;
+            background: rgba(46, 204, 113, 0.1);
+        }
+        .status h3 {
+            color: #27ae60;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 中国象棋交互指南</h1>
+        
+        <div class="status running">
+            <h3>🎮 游戏状态：正在运行中</h3>
+            <p>Python 进程已在终端中启动，游戏窗口应该已经显示</p>
+        </div>
+
+        <div class="section">
+            <h2>✨ 修复的交互问题</h2>
+            <ul class="feature-list">
+                <li><strong>棋子显示字符：</strong>修复了黑方棋子显示错误的问题，现在红黑双方都有正确的字符</li>
+                <li><strong>鼠标点击响应：</strong>优化了坐标转换算法，确保点击准确性</li>
+                <li><strong>选中状态：</strong>改进棋子选中时的视觉反馈</li>
+                <li><strong>移动提示：</strong>绿色圆点清晰显示可移动位置</li>
+            </ul>
+        </div>
+
+        <div class="section controls">
+            <h2>🎮 游戏操作</h2>
+            <ul class="feature-list">
+                <li><strong>选择棋子：</strong>点击己方棋子进行选择</li>
+                <li><strong>移动棋子：</strong>选择棋子后，点击绿色圆点位置进行移动</li>
+                <li><strong>取消选择：</strong>点击空白区域或其他己方棋子</li>
+                <li><strong>游戏规则：</strong>遵循传统中国象棋规则</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>♟️ 棋子说明</h2>
+            <div class="pieces">
+                <div class="piece red-piece">帅</div>
+                <div class="piece red-piece">仕</div>
+                <div class="piece red-piece">相</div>
+                <div class="piece red-piece">马</div>
+                <div class="piece red-piece">车</div>
+                <div class="piece red-piece">炮</div>
+                <div class="piece red-piece">兵</div>
+            </div>
+            <div class="pieces">
+                <div class="piece black-piece">将</div>
+                <div class="piece black-piece">士</div>
+                <div class="piece black-piece">象</div>
+                <div class="piece black-piece">馬</div>
+                <div class="piece black-piece">車</div>
+                <div class="piece black-piece">砲</div>
+                <div class="piece black-piece">卒</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 游戏特色</h2>
+            <ul class="feature-list">
+                <li><strong>完整规则：</strong>所有棋子都有正确的移动规则</li>
+                <li><strong>视觉反馈：</strong>选中状态、可移动位置清晰显示</li>
+                <li><strong>回合制：</strong>红方和黑方交替进行</li>
+                <li><strong>状态显示：</strong>实时显示当前玩家和游戏状态</li>
+                <li><strong>中文界面：</strong>完全中文化的用户界面</li>
+                <li><strong>响应式设计：</strong>优化的窗口尺寸和交互体验</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>💡 使用提示</h2>
+            <ul class="feature-list">
+                <li>游戏窗口尺寸已优化为 600×700 像素，适合大多数显示器</li>
+                <li>棋子大小适中，便于点击操作</li>
+                <li>绿色圆点表示该棋子可以移动到的位置</li>
+                <li>黄色圆环表示当前选中的棋子</li>
+                <li>游戏会自动检测胜负状态</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

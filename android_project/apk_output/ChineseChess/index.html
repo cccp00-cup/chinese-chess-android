@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国象棋</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>中国象棋</h1>
+        
+        <div class="game-info">
+            <div class="current-turn">
+                当前回合: <span id="current-player">红方</span>
+            </div>
+            <div class="game-status">
+                游戏状态: <span id="game-status">进行中</span>
+            </div>
+            <button id="restart-btn" class="restart-btn">重新开始</button>
+        </div>
+
+        <div class="board-container">
+            <div id="chess-board" class="chess-board"></div>
+        </div>
+
+        <div class="game-controls">
+            <div class="captured-pieces">
+                <div class="captured-red">
+                    <h3>红方吃掉:</h3>
+                    <div id="captured-red" class="captured-list"></div>
+                </div>
+                <div class="captured-black">
+                    <h3>黑方吃掉:</h3>
+                    <div id="captured-black" class="captured-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="chess.js"></script>
+</body>
+</html>

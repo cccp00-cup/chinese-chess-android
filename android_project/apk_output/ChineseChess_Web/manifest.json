@@ -1,0 +1,17 @@
+{
+  "name": "中国象棋联机版",
+  "short_name": "中国象棋",
+  "description": "经典中国象棋游戏，支持联机对战",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#8B4513",
+  "theme_color": "#8B4513",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "chinese_new_year_icon_178470.ico",
+      "sizes": "256x256",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.current-turn, .game-status {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+#current-player {
+    color: #e74c3c;
+}
+
+.restart-btn {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.board-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.chess-board {
+    width: 540px;
+    height: 600px;
+    background: #f4d03f;
+    border: 5px solid #8b4513;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.board-grid {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 480px;
+    height: 540px;
+}
+
+.board-row {
+    display: flex;
+    height: 30px;
+}
+
+.board-cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #8b4513;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.board-cell:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.board-cell.selected {
+    background: rgba(255, 255, 0, 0.5);
+    border: 2px solid #f39c12;
+}
+
+.board-cell.valid-move {
+    background: rgba(0, 255, 0, 0.3);
+    border: 2px solid #27ae60;
+}
+
+.board-cell.valid-capture {
+    background: rgba(255, 0, 0, 0.3);
+    border: 2px solid #e74c3c;
+}
+
+.piece {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    user-select: none;
+}
+
+.piece:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.piece.red {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.piece.black {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.piece.selected {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
+}
+
+.river {
+    position: absolute;
+    top: 270px;
+    left: 30px;
+    width: 480px;
+    height: 60px;
+    background: rgba(52, 152, 219, 0.2);
+    border-top: 2px solid #8b4513;
+    border-bottom: 2px solid #8b4513;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #8b4513;
+    font-weight: bold;
+}
+
+.palace {
+    position: absolute;
+    border: 3px solid #8b4513;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.palace-red {
+    top: 420px;
+    left: 150px;
+    width: 240px;
+    height: 120px;
+}
+
+.palace-black {
+    top: 60px;
+    left: 150px;
+    width: 240px;
+    height: 120px;
+}
+
+.palace::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(139, 69, 19, 0.1) 10px,
+        rgba(139, 69, 19, 0.1) 20px
+    );
+}
+
+.game-controls {
+    display: flex;
+    justify-content: center;
+}
+
+.captured-pieces {
+    display: flex;
+    gap: 50px;
+}
+
+.captured-red, .captured-black {
+    text-align: center;
+}
+
+.captured-red h3 {
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.captured-black h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.captured-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    min-height: 40px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    min-width: 200px;
+}
+
+.captured-piece {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.captured-piece.red {
+    background: #e74c3c;
+}
+
+.captured-piece.black {
+    background: #2c3e50;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .chess-board {
+        width: 360px;
+        height: 400px;
+    }
+    
+    .board-grid {
+        top: 20px;
+        left: 20px;
+        width: 320px;
+        height: 360px;
+    }
+    
+    .board-row {
+        height: 20px;
+    }
+    
+    .board-cell {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .piece {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+    }
+    
+    .river {
+        top: 180px;
+        left: 20px;
+        width: 320px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .palace-red {
+        top: 280px;
+        left: 100px;
+        width: 160px;
+        height: 80px;
+    }
+    
+    .palace-black {
+        top: 40px;
+        left: 100px;
+        width: 160px;
+        height: 80px;
+    }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国象棋游戏预览</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .game-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .screenshot {
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .run-button {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .run-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .size-info {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 中国象棋游戏</h1>
+        
+        <div class="size-info">
+            <strong>📏 优化后的尺寸：</strong> 600×700 像素（比之前更紧凑）
+        </div>
+        
+        <div class="game-info">
+            <h3>🎮 游戏特色：</h3>
+            <ul class="feature-list">
+                <li>完整的中国象棋规则实现</li>
+                <li>所有棋子类型：将帅、士仕、象相、马馬、车車、炮砲、兵卒</li>
+                <li>交互式鼠标操作</li>
+                <li>智能移动规则验证</li>
+                <li>实时游戏状态显示</li>
+                <li>中文界面支持</li>
+                <li>传统棋盘设计</li>
+            </ul>
+        </div>
+        
+        <div class="game-info">
+            <h3>🎯 操作说明：</h3>
+            <ul class="feature-list">
+                <li>点击棋子选择</li>
+                <li>绿色圆点显示合法移动位置</li>
+                <li>再次点击目标位置移动棋子</li>
+                <li>自动切换红方/黑方回合</li>
+            </ul>
+        </div>
+        
+        <div class="game-info">
+            <h3>💻 技术信息：</h3>
+            <ul class="feature-list">
+                <li>基于 Python 3.12 + Pygame 2.5.2</li>
+                <li>窗口尺寸：600×700 像素</li>
+                <li>响应式棋子设计</li>
+                <li>面向对象编程架构</li>
+            </ul>
+        </div>
+        
+        <button class="run-button" onclick="alert('游戏已在终端中运行！请查看游戏窗口。')">🚀 查看游戏状态</button>
+    </div>
+</body>
+</html>

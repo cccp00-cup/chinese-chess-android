@@ -1,0 +1,11 @@
+中国象棋 - PyDroid版本使用说明
+
+1. 在Android手机上安装PyDroid 3
+2. 将本文件夹复制到手机
+3. 在PyDroid中打开 install_dependencies.py 安装依赖
+4. 安装完成后，运行 run_game.py 开始游戏
+
+注意：
+- 确保手机网络连接正常
+- 首次安装依赖可能需要一些时间
+- 游戏支持触屏操作
