@@ -1,0 +1,56 @@
+name: Build Android APK using Conda and Buildozer
+
+on: 
+  push:
+分支: [ main ]
+  pull_request:
+分支: [ main ]
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 5
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.9'
+    
+    - name: Add conda to system path
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        echo $CONDA/bin >> $GITHUB_PATH
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -i https://pypi.tuna.tsinghua.edu.cn/simple buildozer python-for-android
+    
+    - name: Configure Buildozer with Chinese mirrors
+      run: |
+        mkdir -p ~/.buildozer
+        cat > ~/.buildozer/config << EOF
+        [app]
+        android.sdk_repository = https://mirrors.aliyun.com/android/repository/
+        android.ndk_repository = https://mirrors.aliyun.com/android-ndk/
+        EOF
+    
+    - name: Build APK with Buildozer
+      run: |
+        buildozer -v android debug
+    
+    - name: Upload APK artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: chinese-chess-apk
+        path: bin/*.apk
